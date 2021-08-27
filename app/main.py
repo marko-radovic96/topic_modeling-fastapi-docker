@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     model_name: str = "Topic Modeling API"
     model_path: str = './pickle/model.pkl'
     vectorizer_path: str = './pickle/vectorizer.pkl'
-
+ 
 settings = Settings()
 
 app = FastAPI(title=settings.model_name,
@@ -37,6 +37,11 @@ vocabulary = vectorizer.get_feature_names()
 
 nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 #C:\\Users\\Marko\\source\\repos\\python\\env\\Lib\\site-packages\\en_core_web_sm\\en_core_web_sm-3.1.0
+
+
+@app.get("/", description="Health check", tags=["Health"])
+async def health_check():
+    return "Hello from topic"
 
 @app.get("/topics", response_model=Topics, description="Returns n top words per topic",
          tags=["Topics"])

@@ -1,5 +1,4 @@
 import re
-import spacy
 
 
 def get_top_words_per_topics(model, vocabulary, n_top_words=10):

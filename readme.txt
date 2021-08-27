@@ -13,3 +13,4 @@ docker run -d --name topic -p 80:80 topic:1.3
 
 Deploy to heroku:
 https://www.youtube.com/watch?v=4axmcEZTE7M&ab_channel=Sparkbox
+https://www.youtube.com/watch?v=I5pYKXnzIWY&ab_channel=FromZero
