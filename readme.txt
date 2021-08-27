@@ -9,7 +9,12 @@ https://towardsdatascience.com/developing-and-deploying-a-complete-project-using
 
 Create image:
 docker build -t topic:1.3 .
+
+Create container:
 docker run -d --name topic -p 80:80 topic:1.3
+
+Go into running docker container:
+docker exec -it container-name bash
 
 Deploy to heroku:
 https://www.youtube.com/watch?v=4axmcEZTE7M&ab_channel=Sparkbox
