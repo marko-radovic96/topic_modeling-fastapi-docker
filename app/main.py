@@ -36,22 +36,19 @@ with open(settings.vectorizer_path, 'rb') as file:
 vocabulary = vectorizer.get_feature_names()
 
 nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
-#C:\\Users\\Marko\\source\\repos\\python\\env\\Lib\\site-packages\\en_core_web_sm\\en_core_web_sm-3.1.0
 
 
 @app.get("/", description="Health check", tags=["Health"])
 async def health_check():
     return "Hello from topic"
 
-@app.get("/topics", response_model=Topics, description="Returns n top words per topic",
-         tags=["Topics"])
+@app.get("/topics", response_model=Topics, description="Returns n top words per topic", tags=["Topics"])
 async def get_topics(num_of_words: int = 5):
     top_words = get_top_words_per_topics(model, vocabulary, num_of_words)
     return Topics(topics=top_words)
 
 
-@app.get("/predict", response_model=Predictions, description="Returns topic probabilities for given text",
-         tags=["Predict"])
+@app.get("/predict", response_model=Predictions, description="Returns topic probabilities for given text", tags=["Predict"])
 async def predict(text: str = ''):
     text = preprocess(nlp, text)
     term_freq = vectorizer.transform([text])
